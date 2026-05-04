@@ -1,19 +1,25 @@
 services:
   whatsapp_go:
     logging:
-      driver: "json-file"
+      driver: json-file
       options:
-        max-size: "200k"
-        max-file: "10"
+        max-size: 200k
+        max-file: '10'
     build:
       context: .
       dockerfile: ./docker/golang.Dockerfile
-    restart: "on-failure"
+    restart: on-failure
     ports:
-      - "3012:3000"
+      - '3012:3000'
     env_file:
       - src/.env
     volumes:
-      # Persist WhatsApp + chat DBs; entrypoint chowns for gowauser (uid 20001, gid 20000) on start.
-      - ./storages:/app/storages
-      - ./statics:/app/statics
+      - './storages:/app/storages'
+      - './statics:/app/statics'
+    networks:                     
+      - danymed_shared           
+
+networks:                         
+  danymed_shared:                 
+    external: true                
+    name: red_global_danymed
