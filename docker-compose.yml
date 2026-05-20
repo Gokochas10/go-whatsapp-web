@@ -17,9 +17,9 @@ services:
       - './storages:/app/storages'
       - './statics:/app/statics'
     networks:                     
-      - danymed_shared           
+      - danymed_shared_prod           
 
 networks:                         
   danymed_shared:                 
     external: true                
-    name: red_global_danymed
+    name: red_global_danymed_prod
