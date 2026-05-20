@@ -20,6 +20,6 @@ services:
       - danymed_shared_prod           
 
 networks:                         
-  danymed_shared:                 
+  danymed_shared_prod:                 
     external: true                
     name: red_global_danymed_prod
